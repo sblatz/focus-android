@@ -213,7 +213,7 @@ public class SettingsScreenshots extends ScreenshotTest {
                 .check(matches(isDisplayed()))
                 .perform(click());
 
-        onView(withText(R.string.menu_about))
+        onView(withId(R.id.infofragment))
                 .check(matches(isDisplayed()));
         Screengrab.screenshot("About_Page");
 
@@ -227,8 +227,9 @@ public class SettingsScreenshots extends ScreenshotTest {
                 .check(matches(isDisplayed()))
                 .perform(click());
 
-        onView(withText(R.string.your_rights))
+        onView(withId(R.id.infofragment))
                 .check(matches(isDisplayed()));
+
         Screengrab.screenshot("YourRights_Page");
         device.pressBack();
         device.pressBack();
