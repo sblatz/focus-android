@@ -27,7 +27,7 @@ class GeckoViewPermissionHandler: GeckoSession.PermissionDelegate {
             return
         } else if (type == GeckoSession.PermissionDelegate.PERMISSION_GEOLOCATION){
             Log.e("permissionBug", "location permission")
-            callback?.grant()
+            callback?.reject()
         } else {
             Log.e("permissionBug", "onContentPermissionRequest unknown permission: " + type);
             callback?.reject()
