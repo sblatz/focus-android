@@ -40,9 +40,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import org.mozilla.focus.R;
+import org.mozilla.geckoview.AllowOrDeny;
 import org.mozilla.geckoview.GeckoResult;
 import org.mozilla.geckoview.GeckoSession;
-import org.mozilla.geckoview.AllowOrDeny;
 import org.mozilla.geckoview.GeckoSession.PermissionDelegate.MediaSource;
 
 import java.text.ParseException;
@@ -51,6 +51,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import static org.mozilla.geckoview.GeckoSession.PermissionDelegate.PERMISSION_AUTOPLAY_MEDIA;
 
 public final class GeckoViewPrompt implements GeckoSession.PromptDelegate {
     protected static final String LOGTAG = "GeckoViewPrompt";

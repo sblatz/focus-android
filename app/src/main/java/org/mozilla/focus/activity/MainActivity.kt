@@ -11,6 +11,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import mozilla.components.browser.session.Session
 import mozilla.components.browser.session.SessionManager
@@ -282,7 +283,9 @@ open class MainActivity : LocaleAwareAppCompatActivity() {
 
         val browserFragment = BrowserFragment.createForSession(currentSession)
         val isNewSession = previousSessionCount < components.sessionManager.sessions.count() && previousSessionCount > 0
+        Log.d("bioBug", "isNew: " + isNewSession)
 
+        Log.d("bioBug", "source: " + currentSession.source)
         if ((currentSession.source == Session.Source.ACTION_SEND ||
                 currentSession.source == Session.Source.HOME_SCREEN) && isNewSession) {
             browserFragment.openedFromExternalLink = true

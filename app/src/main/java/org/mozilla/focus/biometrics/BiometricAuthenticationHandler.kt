@@ -16,6 +16,7 @@ import android.security.keystore.KeyProperties
 import android.support.annotation.RequiresApi
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat
 import android.support.v4.os.CancellationSignal
+import android.util.Log
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -131,6 +132,7 @@ class BiometricAuthenticationHandler(private val context: Context) :
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     fun onPause() {
+        Log.d("bioBug", "onPause of handler")
         needsAuth = true && Biometrics.hasFingerprintHardware(context)
         stopListening()
     }

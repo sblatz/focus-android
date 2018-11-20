@@ -857,6 +857,10 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
         val fragmentManager = requireActivity().supportFragmentManager
 
         // Check that we need to auth and that the fragment isn't already displayed
+        Log.d("bioBug", "openedFromExternal: " + openedFromExternalLink)
+        Log.d("bioBug", "needsAuth: " + biometricController!!.needsAuth)
+
+
         if (biometricController!!.needsAuth || openedFromExternalLink) {
             view!!.alpha = 0f
             biometricController!!.startAuthentication(openedFromExternalLink)

@@ -32,6 +32,7 @@ import org.json.JSONException
 import org.mozilla.focus.R
 import org.mozilla.focus.browser.LocalizedContent
 import org.mozilla.focus.ext.savedWebViewState
+import org.mozilla.focus.gecko.GeckoViewPermissionHandler
 import org.mozilla.focus.gecko.GeckoViewPrompt
 import org.mozilla.focus.gecko.NestedGeckoView
 import org.mozilla.focus.telemetry.TelemetryWrapper
@@ -47,6 +48,7 @@ import org.mozilla.geckoview.GeckoRuntime
 import org.mozilla.geckoview.GeckoRuntimeSettings
 import org.mozilla.geckoview.GeckoSession
 import org.mozilla.geckoview.GeckoSession.NavigationDelegate
+import org.mozilla.geckoview.GeckoSession.PermissionDelegate.*
 import org.mozilla.geckoview.GeckoSessionSettings
 import org.mozilla.geckoview.SessionFinder
 import kotlin.coroutines.CoroutineContext
@@ -154,6 +156,8 @@ class GeckoWebViewProvider : IWebViewProvider {
             geckoSession.navigationDelegate = createNavigationDelegate()
             geckoSession.trackingProtectionDelegate = createTrackingProtectionDelegate()
             geckoSession.promptDelegate = createPromptDelegate()
+            geckoSession.permissionDelegate = createPermissionDelegate()
+            Log.d("permissionBug", "set delegates!")
             finder = geckoSession.finder
             finder.displayFlags = GeckoSession.FINDER_DISPLAY_HIGHLIGHT_ALL
         }
@@ -554,6 +558,10 @@ class GeckoWebViewProvider : IWebViewProvider {
 
         private fun createPromptDelegate(): GeckoSession.PromptDelegate {
             return GeckoViewPrompt(context as Activity)
+        }
+
+        private fun createPermissionDelegate(): GeckoSession.PermissionDelegate {
+            return GeckoViewPermissionHandler()
         }
 
         override fun canGoForward(): Boolean {
