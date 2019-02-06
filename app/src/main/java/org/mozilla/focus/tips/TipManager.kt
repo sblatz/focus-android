@@ -22,6 +22,7 @@ import org.mozilla.focus.R.string.tip_open_in_new_tab
 import org.mozilla.focus.R.string.tip_request_desktop
 import org.mozilla.focus.R.string.tip_set_default_browser
 import org.mozilla.focus.R.string.tip_take_survey
+import org.mozilla.focus.R.string.tip_take_survey_es
 import org.mozilla.focus.R.string.tip_take_survey_fr
 import org.mozilla.focus.exceptions.ExceptionDomains
 import org.mozilla.focus.ext.components
@@ -87,7 +88,7 @@ class Tip(val id: Int, val text: String, val shouldDisplay: () -> Boolean, val d
                 }
                 "es" -> {
                     surveyURL = "https://qsurvey.mozilla.com/s3/8bbcb0edc4ff"
-                    id = tip_take_survey_fr
+                    id = tip_take_survey_es
                 }
                 else -> return null
             }
